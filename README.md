@@ -132,7 +132,7 @@ Clasification report by class:
 
 ![class_report](https://user-images.githubusercontent.com/82055743/175564134-3b13e8ed-8e9a-45a7-849c-1a10a747f0b5.png)
 
-Train and test comparision
+Train and test comparison
 
 |          | Accuracy | Recall  | Precision |
 | -------- | -------- | ------- | --------- |
