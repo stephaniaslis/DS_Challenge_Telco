@@ -74,7 +74,7 @@ https://github.com/stephaniaslis/DS_Challenge_Telco/blob/main/report_telco_churn
 - Account charges monthly (average): 74.44 US$
 - Customer tenure is highly correlated with Account charges total
 
-### Feature Selection
+## Feature Selection
 For feature selection, is used a majority voting method applying 3 selection proposals:
 
 Statistical test
@@ -82,7 +82,7 @@ Statistical test
 - Boruta
 - Features maintained by at least 2 algorithms will be used in the modeling process
 
-### Model
+## Model
 This is a Churn prediction project, so the metric choosen to evaluate the model is Recall, because the risk of misidentifying false negatives is more serious than predicting false positives.
 
 Firstofall, there was a train test split.
@@ -101,32 +101,53 @@ After that, the model was tuned using random grid search, tunnig the hyperparams
 - n_estimators
 - learning_rate
 
-#### Model metrics:
+### Model metrics:
 
+|          | Accuracy | Recall  | Precision |
+| -------- | -------- | ------- | --------- |
+| Train    |  0.79    |   0.85  |   0.77    |
+| Baseline |  0.73    |
 
 
 Model confusion matrix:
 
 ![cm_model](https://user-images.githubusercontent.com/82055743/175562817-4cc9d996-a6d2-47bb-b2e4-70096c152f6e.png)
 
-The most important feature in this model is customer tenure
+The most important feature in this model is customer tenure:
 
 ![feature_selection](https://user-images.githubusercontent.com/82055743/175562984-6d147115-95c8-4442-88b4-63ee1c428ae6.png)
 
+### Test metrics
 
+|          | Accuracy | Recall  | Precision |
+| -------- | -------- | ------- | --------- |
+| Test     |  0.75    |   0.77  |   0.52    |
+| Baseline |  0.73    |
 
+Test confusion matrix
 
-claasification report by class
+![cm_test](https://user-images.githubusercontent.com/82055743/175563864-3a4664ca-d9a2-4d2f-9ba1-f95ef5771a51.png)
 
-Test metrics
+Clasification report by class:
+
+![class_report](https://user-images.githubusercontent.com/82055743/175564134-3b13e8ed-8e9a-45a7-849c-1a10a747f0b5.png)
+
+Train and test comparision
+
+|          | Accuracy | Recall  | Precision |
+| -------- | -------- | ------- | --------- |
+| Train    |  0.79    |   0.85  |   0.77    |
+| Test     |  0.75    |   0.77  |   0.52    |
+| Baseline |  0.73    |
 
 ## Conclusion
 The accuracy is 0.75, considering that the test dataset is unbalanced (0.73 for class 0 and 0.27 for class 1) the model predicts a little bit better than the baseline.
 
 As it shows the recall (sensitivity) in the test dataset is 0.77 wich means that in 100 predictions using this model 77 of positive class are correctly predicted and 23 are incorrectly.
 
-
-Next steps: colect more data to build a more robust model. deployment
+Next steps: 
+- colect more data to build a robuster model
+- deployment
 
 
 
