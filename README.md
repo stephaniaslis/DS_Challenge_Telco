@@ -1,14 +1,14 @@
-# DS_Challenge_Telco
+# :heavy_check_mark:	Data Science Challenge 
 
-This is the 1st Alura Data Science Challenge about Telco Churn classification.
+This is the 1st Alura Data Science Challenge about Telco Churn classification. The goal is Churn prediction.
 
 ## Dataset
-The dataset is in json format, and it is available in the following link
+The dataset is in json format, and it is available in the following link:
 
 https://raw.githubusercontent.com/stephaniaslis/DS_Challenge_Telco/main/Telco-Customer-Churn.json
 
 ## Data Cleaning
-Data cleaning was made using the following steps:
+Data cleaning was made analysing the following steps:
 
 - Useless columns
 - Data kind definition
@@ -22,25 +22,29 @@ Data cleaning was made using the following steps:
     - Outlier analysis
 - Data export
 
+The notebook is available here:
+
+https://github.com/stephaniaslis/DS_Challenge_Telco/blob/3d93e2667009c74f946479027f15b232f9f06c18/Telco_Data_cleaning.ipynb
+
 # EDA
-The EDA was made using pandas profiling that generates an interactive report in html format
+The EDA was made using pandas profiling that generates an interactive report in html format:
 
 ![pandas_prof](https://user-images.githubusercontent.com/82055743/175558728-9ba552e9-dce1-4121-944d-c4d73b3c0408.png)
 
 https://github.com/stephaniaslis/DS_Challenge_Telco/blob/main/report_telco.html
 
-PS: The html is in local hoost
+PS: The html is in localhost.
 
-There was created reports to Churn 0 and CHurn 1:
+There was created reports to Churn 0 (negative Churn) and Churn 1 (positive Churn):
 
 https://github.com/stephaniaslis/DS_Challenge_Telco/blob/main/report_telco_churn_0.html
 
 https://github.com/stephaniaslis/DS_Challenge_Telco/blob/main/report_telco_churn_1.html
 
 ### Report conclusions in general
-- The target (Churn) is unbalanced, the churn rate is 26.6%
-- The gender is almost 50% for male and female
-- There are more customers :
+- The target (Churn) is imbalanced, the churn rate is 27%
+- The gender distribution is almost 50% for male and female
+- There are more customers:
     - under 65 years old
     - with phone service
     - without dependents
@@ -74,13 +78,24 @@ https://github.com/stephaniaslis/DS_Challenge_Telco/blob/main/report_telco_churn
 - Account charges monthly (average): 74.44 US$
 - Customer tenure is highly correlated with Account charges total
 
+The notebook is available here:
+
+https://github.com/stephaniaslis/DS_Challenge_Telco/blob/3d93e2667009c74f946479027f15b232f9f06c18/Telco_EDA.ipynb
+
 ## Feature Selection
 For feature selection, is used a majority voting method applying 3 selection proposals:
 
-Statistical test
+- Statistical test:
+    - Anova for numeric features
+    - Chi2 for categorical features
 - RFECV
 - Boruta
-- Features maintained by at least 2 algorithms will be used in the modeling process
+
+Features maintained by at least 2 selection proposals will be used in the modeling process.
+
+The notebook is available here:
+
+https://github.com/stephaniaslis/DS_Challenge_Telco/blob/3d93e2667009c74f946479027f15b232f9f06c18/Telco_feature_selection_.ipynb
 
 ## Model
 This is a Churn prediction project, so the metric choosen to evaluate the model is Recall, because the risk of misidentifying false negatives is more serious than predicting false positives.
@@ -89,11 +104,18 @@ Firstofall, there was a train test split.
 
 Smote were the balance method used for this dataset.
 
-The models were ranked using pycaret
+The models were ranked using pycaret:
 
 ![compare_model](https://user-images.githubusercontent.com/82055743/175561615-149d3401-3e29-4a32-a19a-896695ab92e1.png)
 
-After that, the three best models were fitted and predictions were made.
+After that, the three best models were fitted and predictions were made with test dataset:
+
+|   Model   | Accuracy | Recall  | Precision |
+| --------- | -------- | ------- | --------- |
+|  xgboost  |  0.7597  | 0.6346  |   0.541   |
+|    ada    |  0.7564  | 0.7273  |   0.5306  |
+| lightgbm  |  0.7725  | 0.6613  |   0.5613  |
+| Baseline  |   0.73   |
 
 The choosen model is AdaBoost because it is above the baseline and it has the best recall.
 
@@ -128,11 +150,11 @@ Test confusion matrix
 
 ![cm_test](https://user-images.githubusercontent.com/82055743/175563864-3a4664ca-d9a2-4d2f-9ba1-f95ef5771a51.png)
 
-Clasification report by class:
+Classification report by class:
 
 ![class_report](https://user-images.githubusercontent.com/82055743/175564134-3b13e8ed-8e9a-45a7-849c-1a10a747f0b5.png)
 
-Train and test comparison
+Train and test comparison:
 
 |          | Accuracy | Recall  | Precision |
 | -------- | -------- | ------- | --------- |
@@ -140,10 +162,14 @@ Train and test comparison
 | Test     |  0.75    |   0.77  |   0.52    |
 | Baseline |  0.73    |
 
-## Conclusion
-The accuracy is 0.75, considering that the test dataset is unbalanced (0.73 for class 0 and 0.27 for class 1) the model predicts a little bit better than the baseline.
+The notebook is available here:
 
-As it shows the recall (sensitivity) in the test dataset is 0.77 wich means that in 100 predictions using this model 77 of positive class are correctly predicted and 23 are incorrectly.
+https://github.com/stephaniaslis/DS_Challenge_Telco/blob/3d93e2667009c74f946479027f15b232f9f06c18/Telco_model.ipynb
+
+## Conclusion
+The accuracy is 0.75, considering that the test dataset is imbalanced (0.73 for class 0 and 0.27 for class 1) the model predicts a little bit better than the baseline.
+
+As it shows the recall (sensitivity) in the test dataset is 0.77, wich means that in 100 predictions using this model 77 of positive class are correctly predicted and 23 are incorrectly.
 
 Next steps: 
 - colect more data to build a robuster model
