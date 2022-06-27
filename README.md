@@ -1,6 +1,7 @@
 # :heavy_check_mark:	Data Science Challenge 
 
-This is the 1st Alura Data Science Challenge about Telco Churn classification. The goal is Churn prediction.
+This is the 1st Alura Data Science Challenge about Telco Churn classification. The goal is predict customer Churn in a classification model.
+
 
 ## Dataset
 The dataset is in json format, and it is available in the following link:
